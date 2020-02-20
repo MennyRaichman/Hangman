@@ -11,7 +11,6 @@ def print_hangman_ascii_photo(HANGMAN_ASCII_ART, MAX_TRIES):
     print(HANGMAN_ASCII_ART, MAX_TRIES)
    
 # Vrsion 3
-# בודק אם נשארו מרווחים במילה הסודית
 def check_win(secret_word, old_letters_guessed):
     """this function checks if the player win
     :param secret_word: secret_word value
@@ -26,7 +25,7 @@ def check_win(secret_word, old_letters_guessed):
     space = "_"  
     return space not in show_hidden_word(secret_word, old_letters_guessed)
 
-# מראה את המילה הסודית והניחושים הנכונים עד כה במקומם
+# show hidden word
 def show_hidden_word(secret_word, old_letters_guessed):
     """this function shows the secret_word with underline
     :param secret_word: secret_word value
@@ -46,7 +45,6 @@ def show_hidden_word(secret_word, old_letters_guessed):
     return guessed_letters
 
 # Version 2
-# בודק האם התו זה אות באנגלית ולא יותר מתו אחד
 def is_valid_input(guess_letter):
     """this function if valid input
     :param guess_letter: guess_letter value
@@ -57,7 +55,6 @@ def is_valid_input(guess_letter):
     return (len(guess_letter) < 2) and (guess_letter.isalpha())
 
 # Vrsion 2
-# מממש את הפונקציה הקודמת ובודק גם אם כבר נוחש בעבר
 def check_valid_input(guess_letter, old_letters_guessed):
     """this function checks if alerady guessed letter
     :param guess_letter: guess_letter value
@@ -69,8 +66,7 @@ def check_valid_input(guess_letter, old_letters_guessed):
     """
     return is_valid_input(guess_letter) and guess_letter not in old_letters_guessed       
 
-# מחזיר אמר אם הניחוש נכון ומוסיף לרשימת הניחושים
-# תו לא תקין או שכבר נוחש מדפיס איקס ואת רשימת התווים שנוחשו
+# try update letter guessed
 def try_update_letter_guessed(guess_letter, old_letters_guessed):
     """this function checks if alerady guessed letter 
     if not add to the old_letters_guessed list
@@ -81,7 +77,6 @@ def try_update_letter_guessed(guess_letter, old_letters_guessed):
     :return: True if ont yet guessed or print the guessed list if alerady guessed
     :rtype: bool
     """
-
     #guess_letter = guess_letter.lower()
     if check_valid_input(guess_letter, old_letters_guessed):
         old_letters_guessed.extend(guess_letter)
@@ -92,7 +87,6 @@ def try_update_letter_guessed(guess_letter, old_letters_guessed):
        print(' -> '.join(old_letters_guessed))
 
 # Vrsion 2
-# בוחר מילה מתוך הקובץ
 def choose_word(file_path, index):
     """this function choose a word from words in a file
     :param file_path: file_path value
